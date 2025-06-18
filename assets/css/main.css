@@ -1,0 +1,347 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../Inter-Regular.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../Inter-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../Inter-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "ArchivoNarrow";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../ArchivoNarrow-Medium.woff2") format("woff2");
+}
+@font-face {
+  font-family: "ArchivoNarrow";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../ArchivoNarrow-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "RobotoCondensed";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../RobotoCondensed-Bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "RobotoCondensed";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../RobotoCondensed-Black.woff2") format("woff2");
+}
+:root {
+  --font-family: "Inter", sans-serif;
+  --second-family: "ArchivoNarrow", sans-serif;
+  --third-family: "RobotoCondensed", sans-serif;
+  --container-width: 1312px;
+  --container-padding-x: 32px;
+  --white: #fff;
+  --transparent: rgba(255, 255, 255, 0);
+  --text-blue: #3e3e59;
+  --foundation-colors-hazegrape-hazegrape-50: #eae9eb;
+  --foundation-colors-hazegrape-hazegrape-100: #bfb9c2;
+  --foundation-colors-hazegrape-hazegrape-200: #a098a4;
+  --foundation-colors-hazegrape-hazegrape-300: #74687b;
+  --foundation-colors-hazegrape-hazegrape-400: #594b61;
+  --foundation-colors-hazegrape-hazegrape-500: #301e3a;
+  --foundation-colors-hazegrape-hazegrape-600: #2c1b35;
+  --foundation-colors-hazegrape-hazegrape-700: #221529;
+  --foundation-colors-hazegrape-hazegrape-800: #1a1120;
+  --foundation-colors-hazegrape-hazegrape-900: #140d18;
+  --foundation-colors-hazewhite-hazewhite-50: #fdfeff;
+  --foundation-colors-hazewhite-hazewhite-100: #f9fcfd;
+  --foundation-colors-hazewhite-hazewhite-200: #f7fafd;
+  --foundation-colors-hazewhite-hazewhite-300: #f3f8fc;
+  --foundation-colors-hazewhite-hazewhite-400: #f1f7fb;
+  --foundation-colors-hazewhite-hazewhite-500: #edf5fa;
+  --foundation-colors-hazewhite-hazewhite-600: #d8dfe4;
+  --foundation-colors-hazewhite-hazewhite-700: #a8aeb2;
+  --foundation-colors-hazewhite-hazewhite-800: #82878a;
+  --foundation-colors-hazewhite-hazewhite-900: #646769;
+  --foundation-colors-hazepurple-hazepurple-50: #ececf9;
+  --foundation-colors-hazepurple-hazepurple-100: #c5c5ed;
+  --foundation-colors-hazepurple-hazepurple-200: #a9a9e5;
+  --foundation-colors-hazepurple-hazepurple-300: #8282d9;
+  --foundation-colors-hazepurple-hazepurple-400: #6969d1;
+  --foundation-colors-hazepurple-hazepurple-500: #4444c6;
+  --foundation-colors-hazepurple-hazepurple-600: #3e3eb4;
+  --foundation-colors-hazepurple-hazepurple-700: #30308d;
+  --foundation-colors-hazepurple-hazepurple-800: #25256d;
+  --foundation-colors-hazepurple-hazepurple-900: #1d1d53;
+  --foundation-colors-hazepink-hazepink-50: #fef4f9;
+  --foundation-colors-hazepink-hazepink-100: #fbdceb;
+  --foundation-colors-hazepink-hazepink-200: #f9cbe1;
+  --foundation-colors-hazepink-hazepink-300: #f6b3d3;
+  --foundation-colors-hazepink-hazepink-400: #f5a4cb;
+  --foundation-colors-hazepink-hazepink-500: #f28dbe;
+  --foundation-colors-hazepink-hazepink-600: #dc80ad;
+  --foundation-colors-hazepink-hazepink-700: #ac6487;
+  --foundation-colors-hazepink-hazepink-800: #854e69;
+  --foundation-colors-hazepink-hazepink-900: #663b50;
+  --foundation-colors-hazelime-hazelime-50: #faffec;
+  --foundation-colors-hazelime-hazelime-100: #effdc4;
+  --foundation-colors-hazelime-hazelime-200: #e7fda8;
+  --foundation-colors-hazelime-hazelime-300: #dcfc80;
+  --foundation-colors-hazelime-hazelime-400: #d5fb68;
+  --foundation-colors-hazelime-hazelime-500: #cbfa42;
+  --foundation-colors-hazelime-hazelime-600: #b9e43c;
+  --foundation-colors-hazelime-hazelime-700: #90b22f;
+  --foundation-colors-hazelime-hazelime-800: #708a24;
+  --foundation-colors-hazelime-hazelime-900: #55691c;
+  --foundation-colors-hazered-900: #4f1319;
+  --foundation-colors-hazered-800: #721c24;
+  --foundation-colors-hazered-700: #96242f;
+  --foundation-colors-hazered-600: #b92d3a;
+  --foundation-colors-hazered-500: #dc3545;
+  --foundation-colors-hazered-400: #e25563;
+  --foundation-colors-hazered-300: #e77681;
+  --foundation-colors-hazered-200: #ed969e;
+  --foundation-colors-hazered-100: #f2b6bc;
+  --foundation-colors-hazered-50: #ffe0e3;
+  --foundation-colors-hazeyellow-900: #5c4503;
+  --foundation-colors-hazeyellow-800: #856404;
+  --foundation-colors-hazeyellow-700: #ad8305;
+  --foundation-colors-hazeyellow-600: #d6a206;
+  --foundation-colors-hazeyellow-500: #ffc107;
+  --foundation-colors-hazeyellow-400: #ffcb2f;
+  --foundation-colors-hazeyellow-300: #ffd556;
+  --foundation-colors-hazeyellow-200: #ffdf7e;
+  --foundation-colors-hazeyellow-100: #ffe9a6;
+  --foundation-colors-hazeyellow-50: #fbf0cd;
+  --foundation-colors-hazeteal-900: #0c4836;
+  --foundation-colors-hazeteal-800: #11694f;
+  --foundation-colors-hazeteal-700: #168967;
+  --foundation-colors-hazeteal-600: #1ba97f;
+  --foundation-colors-hazeteal-500: #20c997;
+  --foundation-colors-hazeteal-400: #44d2a8;
+  --foundation-colors-hazeteal-300: #67dab8;
+  --foundation-colors-hazeteal-200: #8be3c9;
+  --foundation-colors-hazeteal-100: #afecda;
+  --foundation-colors-hazeteal-50: #dcfff5;
+  --foundation-colors-hazeblue-900: #05285b;
+  --foundation-colors-hazeblue-800: #073984;
+  --foundation-colors-hazeblue-700: #094bac;
+  --foundation-colors-hazeblue-600: #0b5cd5;
+  --foundation-colors-hazeblue-500: #0d6efd;
+  --foundation-colors-hazeblue-400: #3485fd;
+  --foundation-colors-hazeblue-300: #5a9cfe;
+  --foundation-colors-hazeblue-200: #81b4fe;
+  --foundation-colors-hazeblue-100: #a8cbfe;
+  --foundation-colors-hazeblue-50: #e6f0ff;
+  --foundation-colors-hazecyan-900: #054956;
+  --foundation-colors-hazecyan-800: #07697d;
+  --foundation-colors-hazecyan-700: #0989a3;
+  --foundation-colors-hazecyan-600: #0baaca;
+  --foundation-colors-hazecyan-500: #0dcaf0;
+  --foundation-colors-hazecyan-400: #34d2f2;
+  --foundation-colors-hazecyan-300: #5adbf5;
+  --foundation-colors-hazecyan-200: #81e3f7;
+  --foundation-colors-hazecyan-100: #a8ecfa;
+  --foundation-colors-hazecyan-50: #dafbff;
+  --foundation-colors-hazegreen-900: #09311e;
+  --foundation-colors-hazegreen-800: #0d462c;
+  --foundation-colors-hazegreen-700: #115c39;
+  --foundation-colors-hazegreen-600: #157147;
+  --foundation-colors-hazegreen-500: #198754;
+  --foundation-colors-hazegreen-400: #3e9a6f;
+  --foundation-colors-hazegreen-300: #63ad8b;
+  --foundation-colors-hazegreen-200: #87c1a6;
+  --foundation-colors-hazegreen-100: #acd4c1;
+  --foundation-colors-hazegreen-50: #dcf4e1;
+  --foundation-colors-hazeorange-900: #5b2d07;
+  --foundation-colors-hazeorange-800: #84420a;
+  --foundation-colors-hazeorange-700: #ac560e;
+  --foundation-colors-hazeorange-600: #d56a11;
+  --foundation-colors-hazeorange-500: #fd7e14;
+  --foundation-colors-hazeorange-400: #fd933a;
+  --foundation-colors-hazeorange-300: #fea75f;
+  --foundation-colors-hazeorange-200: #febc85;
+  --foundation-colors-hazeorange-100: #fed1aa;
+  --foundation-colors-hazeorange-50: #ffead8;
+  --foundation-colors-hazemagenta-900: #4d1230;
+  --foundation-colors-hazemagenta-800: #6f1b45;
+  --foundation-colors-hazemagenta-700: #92235a;
+  --foundation-colors-hazemagenta-600: #a12864;
+  --foundation-colors-hazemagenta-500: #b33674;
+  --foundation-colors-hazemagenta-400: #dd5498;
+  --foundation-colors-hazemagenta-300: #e374ab;
+  --foundation-colors-hazemagenta-200: #ea95bf;
+  --foundation-colors-hazemagenta-100: #f0b6d3;
+  --foundation-colors-hazemagenta-50: #fde;
+  --foundation-colors-hazeblack-900: #121212;
+  --foundation-colors-hazeblack-800: #2b2b2b;
+  --foundation-colors-hazeblack-700: #454545;
+  --foundation-colors-hazeblack-600: #605f5f;
+  --foundation-colors-hazeblack-500: #807e7e;
+  --foundation-colors-hazeblack-400: #a7a7a7;
+  --foundation-colors-hazeblack-300: #cbcbcb;
+  --foundation-colors-hazeblack-200: #eaeaea;
+  --foundation-colors-hazeblack-100: #f5f5f5;
+  --foundation-colors-hazeblack-50: #fafafb;
+}
+@media (max-width: 575.98px) {
+  :root {
+    --container-padding-x: 16px;
+  }
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #301e3a;
+  min-width: 375px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::placeholder {
+  color: #666;
+}
+
+::selection {
+  color: #fff;
+  background-color: #301e3a;
+}
+
+button, input, select, textarea {
+  line-height: inherit;
+  outline: none;
+}
+
+input:focus:required:invalid, textarea:focus:required:invalid {
+  border-color: red;
+}
+input:required:valid, textarea:required:valid {
+  border-color: green;
+}
+
+[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+  cursor: pointer;
+}
+
+.afterparty {
+  background: linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
+  background-image: url("../afterparty-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-block: clamp(2rem, 0.0633802817rem + 8.2629107981vw, 7.5rem);
+}
+.afterparty-title {
+  margin-bottom: 80px;
+}
+.afterparty__items {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding-block: 52px;
+}
+@media (max-width: 1023.98px) {
+  .afterparty__items {
+    flex-wrap: wrap;
+    row-gap: 80px;
+  }
+}
+.afterparty__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 25%;
+  flex-shrink: 0;
+  padding-inline: 20px;
+  position: relative;
+}
+.afterparty__item:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  background-color: rgba(48, 30, 58, 0.1);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+@media (max-width: 1023.98px) {
+  .afterparty__item {
+    width: 50%;
+    max-width: 320px;
+  }
+  .afterparty__item:nth-child(odd)::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 100%;
+    background-color: rgba(48, 30, 58, 0.1);
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .afterparty__item:not(:nth-child(odd))::after {
+    content: none;
+  }
+}
+@media (max-width: 575.98px) {
+  .afterparty__item {
+    padding-inline: 8px;
+  }
+}
+.afterparty__item-icon {
+  display: block;
+  width: 72px;
+  margin-bottom: 16px;
+}
+.afterparty__item-title {
+  display: inline-block;
+  font-family: var(--second-family);
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 130%;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--foundation-colors-hazegrape-hazegrape-500);
+  margin-bottom: 5px;
+}
+.afterparty__item-description {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 157%;
+  text-align: center;
+  color: var(--text-blue);
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.section-title {
+  font-family: var(--third-family);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 1.6197183099rem + 3.7558685446vw, 5rem);
+  line-height: 90%;
+  text-align: center;
+  color: var(--foundation-colors-hazegrape-hazegrape-500);
+}
