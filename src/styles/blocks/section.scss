@@ -1,0 +1,14 @@
+@use 'sass:math';
+
+@use '../config' as *;
+
+.section {
+    &-title {
+        font-family: var(--third-family);
+        font-weight: 700;
+        @include fluid-text(80, 40);
+        line-height: 90%;
+        text-align: center;
+        color: var(--foundation-colors-hazegrape-hazegrape-500);
+    }
+}

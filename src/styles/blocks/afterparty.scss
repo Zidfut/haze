@@ -1,0 +1,106 @@
+@use 'sass:math';
+@use '../config' as *;
+
+.afterparty {
+    background: linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, #fff 100%);;
+    background-image: url('../assets/afterparty-bg.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-block: fluid(120, 32);
+
+    &-title {
+        margin-bottom: 80px;
+    }
+
+    &__items {
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        padding-block: 52px;
+
+        @include media-breakpoint-down(lg) {
+            flex-wrap: wrap;
+            row-gap: 80px;
+        }
+    }
+
+    &__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        width: 25%;
+        flex-shrink: 0;
+        padding-inline: 20px;
+        position: relative;
+
+        &:not(:last-child) {
+            &::after {
+                content: '';
+                display: block;
+                width: 1px;
+                height: 100%;
+                background-color: rgba(48, 30, 58, 0.1);
+                position: absolute;
+                top: 0;
+                right: 0;
+            }
+        }
+
+        @include media-breakpoint-down(lg) {
+            width: 50%;
+            max-width: 320px;
+
+            &:nth-child(odd) {
+                &::after {
+                    content: '';
+                    display: block;
+                    width: 1px;
+                    height: 100%;
+                    background-color: rgba(48, 30, 58, 0.1);
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                }
+            }
+
+            &:not(:nth-child(odd)) {
+                &::after {
+                    content: none;
+                }
+            }
+        }
+
+        @include media-breakpoint-down(sm) {
+            padding-inline: 8px;
+        }
+        
+        &-icon {
+            display: block;
+            width: 72px;
+            margin-bottom: 16px;
+        }
+
+        &-title {
+            display: inline-block;
+            font-family: var(--second-family);
+            font-weight: 700;
+            font-size: 18px;
+            line-height: 130%;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--foundation-colors-hazegrape-hazegrape-500);
+            margin-bottom: 5px;
+        }
+
+        &-description {
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 157%;
+            text-align: center;
+            color: var(--text-blue);
+        }
+    }
+}
