@@ -1,5 +1,4 @@
 @use 'sass:math';
-
 @use '../config' as *;
 
 .section {
@@ -10,5 +9,16 @@
         line-height: 90%;
         text-align: center;
         color: var(--foundation-colors-hazegrape-hazegrape-500);
+        
+        &.left {
+            text-align: left;
+        }
+    
+        &.white {
+            color: #fff;
+        }
+        &.uppercase {
+            text-transform: uppercase;
+        }
     }
 }

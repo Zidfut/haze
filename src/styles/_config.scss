@@ -90,7 +90,7 @@ $grid-breakpoints: (
   --third-family: "RobotoCondensed", sans-serif;
 
   --container-width: 1312px;
-  --container-padding-x: 32px;
+  --container-padding-x: 64px;
 
   --white: #fff;
 	--transparent: rgba(255, 255, 255, 0);
@@ -236,9 +236,13 @@ $grid-breakpoints: (
 	--foundation-colors-hazeblack-100: #f5f5f5;
 	--foundation-colors-hazeblack-50: #fafafb;
 
-   @include media-breakpoint-down(sm) {
-    --container-padding-x: 16px; 
-  }
+   	@include media-breakpoint-down(lg) {
+    	--container-padding-x: 32px; 
+  	}
+
+   	@include media-breakpoint-down(sm) {
+    	--container-padding-x: 16px; 
+  	}
 }
 
 body {
