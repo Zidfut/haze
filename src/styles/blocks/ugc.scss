@@ -1,0 +1,53 @@
+@use 'sass:math';
+@use '../config' as *;
+
+.ugc {
+    padding: 32px 0 128px;
+    background-color: var(--foundation-colors-hazewhite-hazewhite-500);
+    overflow: hidden;
+
+    @include media-breakpoint-down(sm) {
+      padding: 32px 0;
+    }
+
+    &__header {
+        @include media-breakpoint-down(sm) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: center;
+            row-gap: 40px;
+        }
+    }
+    
+    &__slider {
+        padding-inline: 52px;
+
+        @include media-breakpoint-down(md) {
+            padding-inline: 16px;
+        }
+
+        &-wrapper {
+            overflow: visible;
+        }
+
+        &-card {
+            width: 337px;
+            height: 408px;
+
+            @include media-breakpoint-down(sm) {
+              width: 287px;
+              height: 347px;
+            }
+        }
+
+        &-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 32px;
+        }
+    }
+}
