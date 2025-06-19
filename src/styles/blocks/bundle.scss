@@ -48,6 +48,10 @@
             row-gap: 32px;
         }
 
+        &-title {
+            margin-bottom: 0;
+        }
+
         &-subtitle {
             display: inline-block;
             font-family: var(--font-family);
