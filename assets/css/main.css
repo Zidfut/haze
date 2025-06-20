@@ -399,6 +399,25 @@ input:required:valid, textarea:required:valid {
     width: 100%;
   }
 }
+.bundle__card:not(:last-child)::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  border: 5px solid rgba(255, 255, 255, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+@media (hover: hover) {
+  .bundle__card:not(:last-child):hover::after {
+    opacity: 1;
+  }
+}
 .bundle__card:not(:first-child):not(:last-child) {
   margin-left: -7.625%;
 }
@@ -419,6 +438,31 @@ input:required:valid, textarea:required:valid {
   .bundle__card:last-child {
     width: 100%;
     margin-left: initial;
+  }
+}
+.bundle__card:last-child .default-btn {
+  height: 44px;
+  position: relative;
+  z-index: 1;
+}
+.bundle__card:last-child .default-btn::after {
+  content: "";
+  display: block;
+  border-radius: 39px;
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, #301e3a 0%, #4444c6 46.15%, #f28dbe 100%);
+  z-index: -1;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+@media (hover: hover) {
+  .bundle__card:last-child .default-btn:hover {
+    border-color: transparent;
+    background-color: transparent;
+  }
+  .bundle__card:last-child .default-btn:hover::after {
+    opacity: 1;
   }
 }
 .bundle__card-title {
@@ -462,11 +506,12 @@ input:required:valid, textarea:required:valid {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  height: 44px;
   column-gap: 4px;
   text-align: center;
   white-space: nowrap;
   border-radius: 39px;
-  padding: 0.555em 1.444em;
+  padding: 10px 26px;
   background-color: #fff;
   font-family: var(--second-family);
   font-weight: 700;
@@ -477,12 +522,30 @@ input:required:valid, textarea:required:valid {
   text-decoration: none;
   text-align: center;
   color: var(--foundation-colors-hazegrape-hazegrape-500);
+  transition: background-color 0.3s ease;
+}
+@media (hover: hover) {
+  .default-btn:hover {
+    background-color: var(--foundation-colors-hazelime-hazelime-500);
+  }
 }
 .default-btn.bordered {
   background-color: transparent;
   border: 2px solid var(--foundation-colors-hazegrape-hazegrape-500);
   color: var(--foundation-colors-hazegrape-hazegrape-500);
-  padding: 0.45em 1.34em;
+  transition: 0.3s ease;
+}
+.default-btn.bordered svg path {
+  transition: 0.3s ease;
+}
+@media (hover: hover) {
+  .default-btn.bordered:hover {
+    background-color: var(--foundation-colors-hazegrape-hazegrape-500);
+    color: #fff;
+  }
+  .default-btn.bordered:hover svg path {
+    stroke: #fff;
+  }
 }
 .default-btn .icon {
   display: block;
