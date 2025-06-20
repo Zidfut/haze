@@ -5,27 +5,52 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    height: 44px;
     column-gap: 4px;
     text-align: center;
     white-space: nowrap;
     border-radius: 39px;
-    padding: 0.555em 1.444em;
+    padding: 10px 26px;
     background-color: #fff;
     font-family: var(--second-family);
     font-weight: 700;
     font-size: 18px;
-    line-height: 1;
+    line-height: 32px;
     letter-spacing: -0.02em;
     text-transform: uppercase;
     text-decoration: none;
     text-align: center;
     color: var(--foundation-colors-hazegrape-hazegrape-500);
+    transition: background-color .3s ease;
+
+    @media(hover: hover) {
+        &:hover {
+            background-color: var(--foundation-colors-hazelime-hazelime-500);
+        }
+    }
 
     &.bordered {
+        min-width: 150px;
+        padding: 10px 24px;
         background-color: transparent;
         border: 2px solid var(--foundation-colors-hazegrape-hazegrape-500);
         color: var(--foundation-colors-hazegrape-hazegrape-500);
-        padding: 0.45em 1.34em;
+        transition: .3s ease;
+
+        svg path {
+            transition: .3s ease;
+        }
+
+        @media(hover: hover) {
+            &:hover {
+                background-color: var(--foundation-colors-hazegrape-hazegrape-500);
+                color: #fff;
+
+                svg path {
+                    stroke: #fff;
+                }
+            }
+        }
     }
 
     .icon {

@@ -50,6 +50,9 @@
         border-radius: 32px;
         padding: 40px;
         background-color: #fff;
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
         
         @include media-breakpoint-down(sm) {
           width: 287px;
