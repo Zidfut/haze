@@ -255,9 +255,6 @@ input:required:valid, textarea:required:valid {
 .bundle__banner {
   padding: 64px;
   border-radius: 32px;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
   position: relative;
   z-index: 1;
   margin-bottom: 10px;
@@ -272,18 +269,6 @@ input:required:valid, textarea:required:valid {
   .bundle__banner {
     padding: 32px;
   }
-}
-.bundle__banner::before {
-  content: "";
-  display: block;
-  width: 100%;
-  height: 100%;
-  border-radius: 32px;
-  background: linear-gradient(270deg, rgba(48, 30, 58, 0) 50%, #301e3a 100%);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
 }
 .bundle__banner-content {
   display: flex;
@@ -331,6 +316,38 @@ input:required:valid, textarea:required:valid {
     width: 60%;
   }
 }
+.bundle__banner-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 32px;
+  overflow: hidden;
+  z-index: -1;
+}
+.bundle__banner-background::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  background: linear-gradient(270deg, rgba(48, 30, 58, 0) 50%, #301e3a 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@media (max-width: 575.98px) {
+  .bundle__banner-background::before {
+    background: linear-gradient(180deg, rgba(48, 30, 58, 0) 50%, #301e3a 100%);
+  }
+}
+.bundle__banner-video {
+  display: block;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
 .bundle__cards {
   display: flex;
   align-items: stretch;
@@ -363,6 +380,7 @@ input:required:valid, textarea:required:valid {
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
+  position: relative;
 }
 @media (max-width: 1199.98px) {
   .bundle__card {
@@ -423,6 +441,22 @@ input:required:valid, textarea:required:valid {
   text-transform: uppercase;
   color: var(--foundation-colors-hazegrape-hazegrape-500);
 }
+.bundle__card-background {
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  z-index: -1;
+  border-radius: 32px;
+  overflow: hidden;
+}
+.bundle__card-background-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .default-btn {
   display: inline-flex;
@@ -462,11 +496,30 @@ input:required:valid, textarea:required:valid {
 }
 
 .features {
-  background: linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
-  background-image: url("../features-bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
   padding-block: clamp(2rem, 0.0633802817rem + 8.2629107981vw, 7.5rem);
+  position: relative;
+}
+.features__background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+.features__background-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.features__background-overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(360deg, rgba(255, 255, 255, 0) 0%, #fff 100%);
 }
 .features-title {
   margin-bottom: 80px;
