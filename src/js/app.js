@@ -74,3 +74,42 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
+const phoneInput = document.querySelector("#phone");
+window.intlTelInput(phoneInput, {
+  containerClass: "contact__form-phone",
+  initialCountry: "us",
+  separateDialCode: true,
+  loadUtils: () =>
+    import(
+      "https://cdn.jsdelivr.net/npm/intl-tel-input@25.3.1/build/js/utils.js"
+    ),
+});
+
+const itiWrapper = phoneInput.closest(".iti");
+
+phoneInput.addEventListener("focus", () => {
+  itiWrapper.classList.add("is-focused");
+});
+
+phoneInput.addEventListener("blur", () => {
+  itiWrapper.classList.remove("is-focused");
+});
+
+function updatePadding() {
+  const flagContainer = phoneInput.closest(".iti")?.querySelector(".iti__country-container");
+  if (flagContainer) {
+    const flagWidth = flagContainer.offsetWidth;
+    const finalPadding = flagWidth + 16;
+
+    phoneInput.style.paddingLeft = `${finalPadding}px`;
+  }
+}
+
+requestAnimationFrame(() => {
+  updatePadding();
+});
+
+phoneInput.addEventListener("countrychange", () => {
+  updatePadding();
+});

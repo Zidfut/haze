@@ -1,0 +1,190 @@
+@use "sass:math";
+@use "../config" as *;
+
+.contact__section {
+  padding-block: 24px 52px;
+
+  @include media-breakpoint-down(sm) {
+    padding-block: 20px 16px;
+  }
+}
+.contact__block {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  column-gap: 16px;
+
+  @include media-breakpoint-down(sm) {
+    flex-direction: column-reverse;
+    row-gap: 32px;
+  }
+
+  &-left {
+    width: 100%;
+    max-width: 450px;
+  }
+  &-right {
+    width: 100%;
+    max-width: 774px;
+  }
+
+  &-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+}
+.contact__form {
+  &-inner {
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    row-gap: 24px;
+  }
+
+  &-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    &.disabled {
+      pointer-events: none;
+      .contact__form-input {
+        border-color: var(--foundation-colors-hazeblack-400);
+        background-color: transparent;
+      }
+
+      .contact__form-label {
+        color: var(--foundation-colors-hazeblack-400);
+      }
+    }
+  }
+
+  &-label {
+    display: inline-block;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--text-blue);
+    margin-bottom: 8px;
+  }
+
+  &-input,
+  &-textarea {
+    width: 100%;
+    height: 52px;
+    border: 1px solid var(--foundation-colors-hazeblack-300);
+    border-radius: 6px;
+    padding: 0px 16px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: var(--foundation-colors-hazeblack-900);
+
+    &:focus {
+      border-color: var(--foundation-colors-hazeblack-900);
+    }
+
+    &::placeholder {
+      color: var(--foundation-colors-hazeblack-400);
+    }
+
+    &:required:user-invalid {
+      border-color: var(--foundation-colors-hazered-500);
+    }
+  }
+
+  &-info {
+    display: inline-block;
+    margin-block: 8px 0;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--foundation-colors-hazeblack-700);
+
+    &.hidden {
+      display: none;
+    }
+  }
+
+  &-textarea {
+    height: 250px;
+    padding: 16px;
+    resize: none;
+  }
+
+  &-phone {
+    width: 100%;
+    .iti__selected-country-primary {
+      padding-inline: 16px 0;
+
+      &:hover {
+        background-color: transparent !important;
+      }
+    }
+
+    .iti__selected-country {
+      padding-inline: 0 16px;
+      border-right: 1px solid var(--foundation-colors-hazeblack-300);
+      column-gap: 8px;
+    }
+
+    .iti__arrow {
+      position: absolute;
+      top: calc(50% - 2px);
+      right: 16px;
+    }
+
+    .iti__selected-dial-code {
+      margin: 0;
+      padding-right: 14px;
+    }
+
+    .iti__search-input {
+      padding: 10px 16px;
+    }
+  }
+
+  &-submit-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    padding: 8px 20px;
+    height: 26px;
+    background: var(--foundation-colors-hazegrape-hazegrape-500);
+    border: none;
+    outline: none;
+    font-family: var(--second-family);
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--white);
+  }
+  
+  .iti.is-focused {
+    .iti__selected-country {
+      border-color: var(--foundation-colors-hazeblack-900);
+    }
+  }
+  .iti--allow-dropdown .iti__country-container:not(:has(+ input[disabled])):not(:has(+ input[readonly])) .iti__selected-country-primary:hover,
+  .iti--allow-dropdown .iti__country-container:not(:has(+ input[disabled])):not(:has(+ input[readonly])) .iti__selected-country:has(+ .iti__dropdown-content:hover) .iti__selected-country-primary {
+    background-color: transparent !important;
+  }
+
+  
+}
+.iti__search-input {
+  padding: 10px 16px;
+}
