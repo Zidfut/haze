@@ -113,3 +113,35 @@ requestAnimationFrame(() => {
 phoneInput.addEventListener("countrychange", () => {
   updatePadding();
 });
+
+
+const searchInput = document.querySelector('.faq__accordion-search-input');
+const faqItems = document.querySelectorAll('.faq__accordion-item');
+
+function debounce(func, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
+function handleSearch() {
+  const searchTerm = searchInput.value.trim().toLowerCase();
+
+  const enableSearch = searchTerm.length >= 2;
+
+  faqItems.forEach(item => {
+    const titleEl = item.querySelector('.faq__accordion-item-header-title');
+    const bodyEl = item.querySelector('.faq__accordion-item-body');
+
+    const titleText = titleEl?.textContent.toLowerCase() || '';
+    const bodyText = bodyEl?.textContent.toLowerCase() || '';
+
+    const matches = enableSearch && (titleText.includes(searchTerm) || bodyText.includes(searchTerm));
+
+    item.style.display = matches || !enableSearch ? 'block' : 'none';
+  });
+}
+
+searchInput.addEventListener('input', debounce(handleSearch, 300));

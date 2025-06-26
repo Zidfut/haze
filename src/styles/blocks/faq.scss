@@ -4,6 +4,7 @@
 .faq__section-wrap {
   padding-block: 64px;
   position: relative;
+  overflow: hidden;
 
   @include media-breakpoint-down(sm) {
     padding-block: 20px 0;
@@ -77,6 +78,52 @@
     }
   }
 
+  &-search {
+    width: 100%;
+    margin-block: 32px;
+    position: relative;
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: calc(50% - 12px);
+      right: 16px;
+    }
+
+    &-input {
+      width: 100%;
+      border: 1px solid var(--foundation-colors-hazeblack-300);
+      border-radius: 6px;
+      padding-inline: 16px 48px; 
+      height: 46px;
+      font-family: var(--font-family);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 22px;
+      color: var(--foundation-colors-hazeblack-900);
+
+      &::placeholder {
+        color: var(--foundation-colors-hazeblack-400);
+      }
+
+      &:focus {
+        border: 1px solid var(--foundation-colors-hazeblack-900);
+
+        & ~ .faq__accordion-search-icon svg path {
+          fill: var(--foundation-colors-hazeblack-900);
+        }
+      }
+    }
+
+    @include media-breakpoint-up(sm) {
+      display: none;
+    }
+  }
+
   &-items {
     display: flex;
     flex-direction: column;
@@ -113,6 +160,7 @@
       cursor: pointer;
       padding-top: 32px;
       transition: margin .2s ease;
+      -webkit-tap-highlight-color: transparent;
 
       @include media-breakpoint-down(sm) {
         padding: 12px 24px 0;
