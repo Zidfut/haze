@@ -97,7 +97,9 @@ phoneInput.addEventListener("blur", () => {
 });
 
 function updatePadding() {
-  const flagContainer = phoneInput.closest(".iti")?.querySelector(".iti__country-container");
+  const flagContainer = phoneInput
+    .closest(".iti")
+    ?.querySelector(".iti__country-container");
   if (flagContainer) {
     const flagWidth = flagContainer.offsetWidth;
     const finalPadding = flagWidth + 16;
@@ -114,9 +116,8 @@ phoneInput.addEventListener("countrychange", () => {
   updatePadding();
 });
 
-
-const searchInput = document.querySelector('.faq__accordion-search-input');
-const faqItems = document.querySelectorAll('.faq__accordion-item');
+const searchInput = document.querySelector(".faq__accordion-search-input");
+const faqItems = document.querySelectorAll(".faq__accordion-item");
 
 function debounce(func, delay) {
   let timer;
@@ -131,17 +132,114 @@ function handleSearch() {
 
   const enableSearch = searchTerm.length >= 2;
 
-  faqItems.forEach(item => {
-    const titleEl = item.querySelector('.faq__accordion-item-header-title');
-    const bodyEl = item.querySelector('.faq__accordion-item-body');
+  faqItems.forEach((item) => {
+    const titleEl = item.querySelector(".faq__accordion-item-header-title");
+    const bodyEl = item.querySelector(".faq__accordion-item-body");
 
-    const titleText = titleEl?.textContent.toLowerCase() || '';
-    const bodyText = bodyEl?.textContent.toLowerCase() || '';
+    const titleText = titleEl?.textContent.toLowerCase() || "";
+    const bodyText = bodyEl?.textContent.toLowerCase() || "";
 
-    const matches = enableSearch && (titleText.includes(searchTerm) || bodyText.includes(searchTerm));
+    const matches =
+      enableSearch &&
+      (titleText.includes(searchTerm) || bodyText.includes(searchTerm));
 
-    item.style.display = matches || !enableSearch ? 'block' : 'none';
+    item.style.display = matches || !enableSearch ? "block" : "none";
   });
 }
 
-searchInput.addEventListener('input', debounce(handleSearch, 300));
+searchInput.addEventListener("input", debounce(handleSearch, 300));
+
+const stores = [
+  { name: "New York Store", address: "New York, NY", lat: 40.7128, lon: -74.0060 },
+  { name: "Los Angeles Branch", address: "Los Angeles, CA", lat: 34.0522, lon: -118.2437 },
+  { name: "Chicago Shop", address: "Chicago, IL", lat: 41.8781, lon: -87.6298 },
+  { name: "Houston Outlet", address: "Houston, TX", lat: 29.7604, lon: -95.3698 },
+  { name: "Phoenix Location", address: "Phoenix, AZ", lat: 33.4484, lon: -112.0740 },
+];
+
+const storeIcon = L.icon({
+  iconUrl: "/assets/pin.svg",
+  iconSize: [63, 73],
+  iconAnchor: [31, 73],
+});
+
+const map = L.map("map", {
+  zoomControl: false,
+  scrollWheelZoom: true,
+  center: [34.0522, -118.2437],
+  zoom: 14,
+});
+
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(map);
+
+function getDistance([lat1, lon1], [lat2, lon2]) {
+  const R = 6371;
+  const dLat = ((lat2 - lat1) * Math.PI) / 180;
+  const dLon = ((lon2 - lon1) * Math.PI) / 180;
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos((lat1 * Math.PI) / 180) *
+      Math.cos((lat2 * Math.PI) / 180) *
+      Math.sin(dLon / 2) ** 2;
+  return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)));
+}
+
+function clearStoreMarkers() {
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker && layer.options.icon === storeIcon) {
+      map.removeLayer(layer);
+    }
+  });
+}
+
+function showStores(userCoords = null) {
+  clearStoreMarkers();
+
+  let nearestStore = null;
+  let minDistance = Infinity;
+
+  stores.forEach((store) => {
+    const marker = L.marker([store.lat, store.lon], { icon: storeIcon }).addTo(map);
+    store.marker = marker;
+
+    if (userCoords) {
+      const dist = getDistance(userCoords, [store.lat, store.lon]);
+      if (dist < minDistance) {
+        minDistance = dist;
+        nearestStore = store;
+      }
+    }
+  });
+
+  if (nearestStore) {
+    map.setView([nearestStore.lat, nearestStore.lon], 12);
+  }
+}
+
+function geocodeAddress(address) {
+  if (!address || address.length < 3) return;
+
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data && data.length > 0) {
+        const { lat, lon } = data[0];
+        const coords = [+lat, +lon];
+        showStores(coords);
+      }
+    })
+    .catch((err) => console.error("Geocoding error:", err));
+}
+
+document.getElementById("locator__form-input").addEventListener("change", (e) => {
+  geocodeAddress(e.target.value);
+});
+document.querySelector(".locator__form-search-button").addEventListener("click", (e) => {
+  e.preventDefault();
+  const input = document.getElementById("locator__form-input");
+  geocodeAddress(input.value);
+});
+
+showStores();
+
