@@ -150,11 +150,31 @@ function handleSearch() {
 searchInput.addEventListener("input", debounce(handleSearch, 300));
 
 const stores = [
-  { name: "New York Store", address: "New York, NY", lat: 40.7128, lon: -74.0060 },
-  { name: "Los Angeles Branch", address: "Los Angeles, CA", lat: 34.0522, lon: -118.2437 },
+  {
+    name: "New York Store",
+    address: "New York, NY",
+    lat: 40.7128,
+    lon: -74.006,
+  },
+  {
+    name: "Los Angeles Branch",
+    address: "Los Angeles, CA",
+    lat: 34.0522,
+    lon: -118.2437,
+  },
   { name: "Chicago Shop", address: "Chicago, IL", lat: 41.8781, lon: -87.6298 },
-  { name: "Houston Outlet", address: "Houston, TX", lat: 29.7604, lon: -95.3698 },
-  { name: "Phoenix Location", address: "Phoenix, AZ", lat: 33.4484, lon: -112.0740 },
+  {
+    name: "Houston Outlet",
+    address: "Houston, TX",
+    lat: 29.7604,
+    lon: -95.3698,
+  },
+  {
+    name: "Phoenix Location",
+    address: "Phoenix, AZ",
+    lat: 33.4484,
+    lon: -112.074,
+  },
 ];
 
 const storeIcon = L.icon({
@@ -170,7 +190,9 @@ const map = L.map("map", {
   zoom: 14,
 });
 
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(map);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {}).addTo(
+  map
+);
 
 function getDistance([lat1, lon1], [lat2, lon2]) {
   const R = 6371;
@@ -199,7 +221,9 @@ function showStores(userCoords = null) {
   let minDistance = Infinity;
 
   stores.forEach((store) => {
-    const marker = L.marker([store.lat, store.lon], { icon: storeIcon }).addTo(map);
+    const marker = L.marker([store.lat, store.lon], { icon: storeIcon }).addTo(
+      map
+    );
     store.marker = marker;
 
     if (userCoords) {
@@ -219,7 +243,9 @@ function showStores(userCoords = null) {
 function geocodeAddress(address) {
   if (!address || address.length < 3) return;
 
-  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(address)}`;
+  const url = `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
+    address
+  )}`;
   fetch(url)
     .then((res) => res.json())
     .then((data) => {
@@ -232,14 +258,17 @@ function geocodeAddress(address) {
     .catch((err) => console.error("Geocoding error:", err));
 }
 
-document.getElementById("locator__form-input").addEventListener("change", (e) => {
-  geocodeAddress(e.target.value);
-});
-document.querySelector(".locator__form-search-button").addEventListener("click", (e) => {
-  e.preventDefault();
-  const input = document.getElementById("locator__form-input");
-  geocodeAddress(input.value);
-});
+document
+  .getElementById("locator__form-input")
+  .addEventListener("change", (e) => {
+    geocodeAddress(e.target.value);
+  });
+document
+  .querySelector(".locator__form-search-button")
+  .addEventListener("click", (e) => {
+    e.preventDefault();
+    const input = document.getElementById("locator__form-input");
+    geocodeAddress(input.value);
+  });
 
 showStores();
-

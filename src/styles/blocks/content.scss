@@ -1,0 +1,43 @@
+@use "sass:math";
+@use "../config" as *;
+
+.inner-page {
+  padding-block: 24px 52px;
+
+  &__title {
+    display: block;
+    font-family: var(--third-family);
+    font-weight: 700;
+    @include fluid-text(48, 40);
+    line-height: 90%;
+    color: var(--foundation-colors-hazeblack-800);
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px ;
+    color: #3E3E59;
+
+    h2, h3, h4, h5, h6 {
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 30px;
+        color: #3E3E59;
+        margin-bottom: 8px;
+    }
+    h2, h3, h4, h5, h6 + p {
+        margin-top: 16px;
+    }
+    p + p {
+        margin-top: 8px;
+    }
+    ul {
+        padding-left: 22px;
+        margin-bottom: 16px;
+    }
+  }
+}
